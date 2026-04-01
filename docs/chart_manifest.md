@@ -41,7 +41,7 @@ Interpretation:
 ## 04_secondary_modulation.png
 
 Purpose:
-- preserve the rule that any quantum-overlap term stays secondary
+- show how a small overlap term sits inside the larger field model
 
 Interpretation:
 - the main emotional-state line carries the backbone

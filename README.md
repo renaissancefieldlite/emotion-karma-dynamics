@@ -1,14 +1,15 @@
 # Emotion Karma Dynamics
 
-This repository packages a cleaner stance for modeling emotional-state dynamics
-without bloated pseudo-quantum graft.
+This repository holds a field model for emotional-state dynamics grounded in
+measurable signals, feedback loops, and return through time.
 
 The backbone is:
 
 - measurable neural and physiological signals
-- nonlinear feedback and delayed-return dynamics
+- nonlinear feedback, delayed return, and resonance across time
 - cross-modal measurement through autonomic and cortical channels
-- optional quantum-overlap language only as a weak secondary modulation term
+- optional quantum-overlap language as a small subscale modulation term within
+  the larger field model
 
 ## Core Position
 
@@ -19,8 +20,8 @@ The stance in this repo is:
 - consequence returns through the environment and re-enters the state
 - this is best modeled first with dynamical systems, control, coupling, and
   delayed feedback
-- any quantum-overlap clause should stay secondary unless the observables,
-  state space, and evidence are actually built
+- any quantum-overlap clause belongs as a small modulation term unless the
+  observables, state space, and evidence are actually built
 
 Short form:
 
@@ -49,7 +50,7 @@ Short form:
 - `03_coupled_resonance.png`
   - phase locking and synchronization
 - `04_secondary_modulation.png`
-  - weak secondary overlap term stays secondary
+  - small overlap term inside the larger field model
 - `05_stack_measurement_ladder.png`
   - ties the stance to the measurement stack and future EEG lane
 

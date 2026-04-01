@@ -2,9 +2,7 @@
 
 ## 1. Main Engine
 
-The main engine is not pseudo-quantum ornament.
-
-It is:
+The main engine in this repo is:
 
 - measurable physiological and neural change
 - nonlinear state evolution
@@ -56,8 +54,7 @@ The stronger cross-modal path is:
 - subjective layer
   - timestamped notes rather than free-floating after-the-fact recap
 
-This creates a more defensible measurement ladder than using ontology language
-alone.
+This creates a stronger measurement ladder than ontology language alone.
 
 ## 4. Stack Alignment
 
@@ -88,19 +85,19 @@ The practical near-term EEG lane:
 
 ## 5. Quantum Overlap Clause
 
-If quantum-overlap language is used, it should be written as secondary:
+If quantum-overlap language is used, write it as a small overlap term inside
+the larger field model:
 
 `de/dt = F(e,t) + beta*q(t)`
 
 where:
 
 - `F(e,t)` is the backbone dynamical model
-- `q(t)` is a possible weak subscale perturbation term
+- `q(t)` is a possible subscale perturbation term
 - `beta` is small
 
 This clause does not replace the primary model.
-It does not authorize fake rigor, borrowed prestige symbols, or ornamental
-equations standing in for observables.
+It does not replace observables, measurement, or the larger feedback frame.
 
 ## 6. Short Form
 
@@ -109,4 +106,4 @@ equations standing in for observables.
 - measurable physiology first
 - feedback dynamics first
 - cross-modal capture next
-- quantum overlap, if any, remains secondary
+- quantum overlap, if any, remains a small term inside the larger field model

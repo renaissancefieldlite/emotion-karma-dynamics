@@ -197,7 +197,7 @@ def make_secondary_modulation():
     fig, axs = plt.subplots(2, 1, figsize=(11, 7), sharex=True)
     axs[0].plot(t, e_base, label="Backbone dynamics F(e,t)", color="#4C78A8", linewidth=2.2)
     axs[0].plot(t, e_mod, label="Backbone + beta q(t)", color="#E45756", linewidth=1.8, alpha=0.9)
-    axs[0].set_title("Secondary Modulation Stays Secondary")
+    axs[0].set_title("Small Overlap Term Inside the Larger Field Model")
     axs[0].set_ylabel("State")
     axs[0].legend(loc="upper right")
 
