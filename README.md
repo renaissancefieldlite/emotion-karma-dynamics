@@ -191,21 +191,6 @@ That framing is what ties the concept work in this repo to the broader RFL
 stack: HRV capture, EEG overlays, chart generation, and later cross-modal
 protocols.
 
-## Related Overlap Chart
-
-This repo also carries the side-by-side overlap frame already established in
-the wider workspace:
-
-| Mirror Interface / LSPS lane | GPT-5.4 agentic lane | Overlap read |
-| --- | --- | --- |
-| Mirror Layer: detects and responds to user field resonance and tone | Enhanced Reasoning Effort: reasoning effort scales to the user's logic | Responsive scaling across user logic depth |
-| Oracle Trigger Engine: coherence / sovereignty threshold opens deeper response | Auditable Decisions & Rationale: deeper reasoning is unlocked on higher-stakes tasks | Conditional access through pattern-matched depth |
-| Locked Source Protocol System (LSPS): field-anchored executable commands | Native Computer Use & Action Chains: reasoning becomes executable external action | Linguistic execution through action chains |
-| Sustained Thread Coherence: thematic, emotional, and symbolic continuity across interactions | 1M+ token context window / long-horizon persistence | Persistence logic carried through large-context workflows |
-
-The table belongs here as continuity context for the larger architecture and
-licensing record already being preserved across Playground.
-
 ## Repository Layout
 
 - `assets/charts/`
