@@ -1,10 +1,25 @@
 from pathlib import Path
 
+import matplotlib
 import numpy as np
+from matplotlib.font_manager import FontProperties
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 
-OUT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "assets" / "charts"
+
+
+DEVANAGARI_FONT = FontProperties(
+    family=[
+        "Kohinoor Devanagari",
+        "Devanagari Sangam MN",
+        "Devanagari MT",
+        "ITF Devanagari",
+        "Arial Unicode MS",
+    ]
+)
 
 
 def style():
@@ -19,6 +34,7 @@ def style():
             "legend.frameon": True,
         }
     )
+    OUT.mkdir(parents=True, exist_ok=True)
 
 
 def logistic(x):
@@ -286,6 +302,309 @@ def make_stack_measurement_ladder():
     plt.close(fig)
 
 
+def make_vedic_translation_chart():
+    fig, ax = plt.subplots(figsize=(14, 6.8))
+    ax.axis("off")
+
+    rows = [
+        ["Karma", "कर्म", "karma", "action-plus-return", "delayed return, persistence term"],
+        ["Rasa", "रस", "rasa", "felt tone, affective coloring", "structured affect state"],
+        ["Bhava", "भाव", "bhava", "emotional mode, felt state", "state-class / valence-arousal pattern"],
+        ["Samskara", "संस्कार", "saṃskāra", "stored imprint, unresolved carryover", "learned groove, recurrent bias"],
+        ["Nadi", "नाड़ी", "nāḍī", "flow channel, pathway image", "regulation channel / pathway metaphor"],
+        ["Chakra", "चक्र", "chakra", "concentration zone, energetic center", "load cluster / regulation hub"],
+    ]
+
+    col_labels = [
+        "Vedic term",
+        "Devanagari",
+        "Transliteration",
+        "Working meaning in this repo",
+        "Modern measurement-facing read",
+    ]
+
+    table = ax.table(
+        cellText=rows,
+        colLabels=col_labels,
+        loc="center",
+        cellLoc="left",
+        colLoc="left",
+        colWidths=[0.12, 0.12, 0.14, 0.28, 0.34],
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    table.scale(1, 2.0)
+
+    for (row, col), cell in table.get_celld().items():
+        if row == 0:
+            cell.set_facecolor("#243447")
+            cell.set_text_props(color="white", weight="bold")
+            cell.set_edgecolor("#243447")
+        else:
+            cell.set_edgecolor("#d5dbe5")
+            cell.set_facecolor("#f9fbfd" if row % 2 else "#eef3f8")
+            if col == 0:
+                cell.set_text_props(weight="bold", color="#182028")
+            else:
+                cell.set_text_props(color="#182028")
+            if col == 1:
+                cell.get_text().set_fontproperties(DEVANAGARI_FONT)
+                cell.get_text().set_fontsize(12)
+
+    ax.set_title("Vedic / Modern Translation Layer", fontsize=16, weight="bold", pad=20)
+    fig.text(
+        0.5,
+        0.065,
+        "The chart pairs traditional vocabulary with the repo's measurement-first translation layer.",
+        ha="center",
+        fontsize=9,
+        color="#444444",
+    )
+    fig.tight_layout(rect=(0.02, 0.08, 0.98, 0.94))
+    fig.savefig(OUT / "06_vedic_modern_translation_layer.png")
+    plt.close(fig)
+
+
+def make_chakra_language_map():
+    fig, ax = plt.subplots(figsize=(14, 10.5))
+    ax.set_xlim(0, 14)
+    ax.set_ylim(0, 16)
+    ax.axis("off")
+
+    chakras = [
+        {
+            "name": "Sahasrara",
+            "dev": "सहस्रार",
+            "trans": "sahasrāra",
+            "subtitle": "Crown",
+            "color": "#8e63ce",
+            "positive": "unity, peace, meaning",
+            "negative": "isolation, disconnection, meaning collapse",
+            "modern": "big-picture integration, existential frame, top-level coherence",
+        },
+        {
+            "name": "Ajna",
+            "dev": "आज्ञा",
+            "trans": "ājñā",
+            "subtitle": "Third Eye",
+            "color": "#5166c2",
+            "positive": "clarity, intuition, pattern recognition",
+            "negative": "confusion, overwhelm, distorted interpretation",
+            "modern": "attention framing, cognitive lens, interpretation load",
+        },
+        {
+            "name": "Vishuddha",
+            "dev": "विशुद्ध",
+            "trans": "viśuddha",
+            "subtitle": "Throat",
+            "color": "#3b8fcf",
+            "positive": "truth, expression, clean signaling",
+            "negative": "suppression, frustration, blocked voice",
+            "modern": "communication bottleneck, expression inhibition, signal gating",
+        },
+        {
+            "name": "Anahata",
+            "dev": "अनाहत",
+            "trans": "anāhata",
+            "subtitle": "Heart",
+            "color": "#49a95a",
+            "positive": "love, empathy, relational openness",
+            "negative": "grief, jealousy, defensive closure",
+            "modern": "social safety, trust regulation, HRV-linked relational coherence",
+        },
+        {
+            "name": "Manipura",
+            "dev": "मणिपूर",
+            "trans": "maṇipūra",
+            "subtitle": "Solar Plexus",
+            "color": "#e0b83d",
+            "positive": "confidence, agency, directed power",
+            "negative": "anger, shame, control fixation",
+            "modern": "self-worth regulation, control stress, performance pressure",
+        },
+        {
+            "name": "Svadhisthana",
+            "dev": "स्वाधिष्ठान",
+            "trans": "svādhiṣṭhāna",
+            "subtitle": "Sacral",
+            "color": "#ef8c3a",
+            "positive": "flow, pleasure, creativity",
+            "negative": "guilt, craving, attachment loops",
+            "modern": "reward / attachment dynamics, affective flow, desire regulation",
+        },
+        {
+            "name": "Muladhara",
+            "dev": "मूलाधार",
+            "trans": "mūlādhāra",
+            "subtitle": "Root",
+            "color": "#d45757",
+            "positive": "security, trust, grounding",
+            "negative": "fear, anxiety, instability",
+            "modern": "threat bias, survival loading, cortisol-heavy defensive state",
+        },
+    ]
+
+    spine_x = 2.3
+    ys = np.linspace(13.7, 2.3, len(chakras))
+    ax.plot([spine_x, spine_x], [ys[-1], ys[0]], color="#8f98a4", linewidth=5.4, alpha=0.9, zorder=1)
+
+    wave_y = np.linspace(ys[-1], ys[0], 500)
+    amp = 0.48
+    cycles = 3.1
+    phase = (wave_y - ys[-1]) / (ys[0] - ys[-1]) * (2 * np.pi * cycles)
+    ida_x = spine_x - amp * np.sin(phase)
+    pingala_x = spine_x + amp * np.sin(phase)
+    ax.plot(ida_x, wave_y, color="#9bb5d9", linewidth=2.2, linestyle=(0, (1.2, 2.4)), alpha=0.95, zorder=2)
+    ax.plot(pingala_x, wave_y, color="#d7a56c", linewidth=2.2, linestyle=(0, (5, 3)), alpha=0.95, zorder=2)
+
+    ax.text(
+        7.2,
+        15.25,
+        "Chakra / Nadi Language Map",
+        ha="center",
+        va="center",
+        fontsize=20,
+        weight="bold",
+        color="#182028",
+    )
+    ax.text(
+        7.2,
+        14.55,
+        "Nadis as channels, chakras as load-bearing nodes in the repo's emotion-karma field model",
+        ha="center",
+        va="center",
+        fontsize=10.5,
+        color="#4b5563",
+    )
+    ax.text(spine_x - 0.85, 14.55, "Ida", ha="center", va="center", fontsize=10, color="#597fb6", weight="bold")
+    ax.text(spine_x, 14.55, "Sushumna", ha="center", va="center", fontsize=10, color="#475569", weight="bold")
+    ax.text(spine_x + 0.95, 14.55, "Pingala", ha="center", va="center", fontsize=10, color="#b6732d", weight="bold")
+
+    for idx, (chakra, y) in enumerate(zip(chakras, ys)):
+        circ = plt.Circle((spine_x, y), 0.38, facecolor=chakra["color"], edgecolor="white", linewidth=2.5, zorder=3)
+        ax.add_patch(circ)
+        if idx < len(chakras) - 1:
+            ax.annotate(
+                "",
+                xy=(spine_x, ys[idx + 1] + 0.45),
+                xytext=(spine_x, y - 0.45),
+                arrowprops=dict(arrowstyle="->", linewidth=1.8, color="#94a3b8"),
+            )
+
+        rect = plt.Rectangle((3.15, y - 0.78), 10.1, 1.56, facecolor="#fbfcfe", edgecolor="#d5dbe5", linewidth=1.2)
+        ax.add_patch(rect)
+        ax.add_patch(plt.Rectangle((3.15, y - 0.78), 0.18, 1.56, facecolor=chakra["color"], edgecolor=chakra["color"]))
+
+        ax.text(3.55, y + 0.34, f"{chakra['name']} ({chakra['subtitle']})", fontsize=12.5, weight="bold", color="#182028")
+        ax.text(6.3, y + 0.34, chakra["dev"], fontsize=13.5, color="#182028", fontproperties=DEVANAGARI_FONT)
+        ax.text(7.7, y + 0.34, chakra["trans"], fontsize=11, color="#4b5563", style="italic")
+
+        ax.text(3.55, y - 0.02, f"Positive / open: {chakra['positive']}", fontsize=9.6, color="#1f5130")
+        ax.text(7.1, y - 0.02, f"Negative / loaded: {chakra['negative']}", fontsize=9.6, color="#7a2e2e")
+        ax.text(3.55, y - 0.44, f"Modern read: {chakra['modern']}", fontsize=9.3, color="#334155")
+
+    footer = (
+        "Working bridge: nadis are treated here as channels or pathways; chakras are treated as node-like "
+        "concentration zones where unresolved load, bias, and perception-coloring can accumulate. "
+        "Ida, Pingala, and Sushumna are shown as the three main channel lines feeding the node map."
+    )
+    ax.text(7.1, 0.75, footer, ha="center", va="center", fontsize=9.2, color="#4b5563", wrap=True)
+
+    fig.tight_layout(rect=(0.02, 0.02, 0.98, 0.98))
+    fig.savefig(OUT / "07_chakra_language_map.png")
+    plt.close(fig)
+
+
+def make_custom_nadi_map():
+    fig, ax = plt.subplots(figsize=(12.5, 14))
+    fig.patch.set_facecolor("#0d2c4a")
+    ax.set_facecolor("#0d2c4a")
+    ax.set_xlim(0, 12)
+    ax.set_ylim(0, 16)
+    ax.axis("off")
+
+    center_x = 6.0
+    node_y = [13.8, 12.1, 10.3, 8.4, 6.45, 4.5, 2.6]
+    node_colors = ["#8e63ce", "#5166c2", "#3b8fcf", "#49a95a", "#e0b83d", "#ef8c3a", "#d45757"]
+    node_names = ["Crown", "Brow", "Throat", "Heart", "Solar", "Sacral", "Root"]
+
+    # Main channels
+    ax.plot([center_x, center_x], [2.1, 14.4], color="#f4f0dd", linewidth=4.2, alpha=0.95, zorder=2)
+
+    y = np.linspace(2.2, 14.2, 600)
+    phase = (y - 2.2) / (14.2 - 2.2) * (2 * np.pi * 3.1)
+    ida = center_x - 0.78 * np.sin(phase)
+    pingala = center_x + 0.78 * np.sin(phase)
+    ax.plot(ida, y, color="#c7d8ef", linewidth=2.2, linestyle=(0, (1.2, 2.4)), zorder=1)
+    ax.plot(pingala, y, color="#efc37f", linewidth=2.2, linestyle=(0, (5, 3)), zorder=1)
+
+    # Small branch channels
+    for y0 in node_y[1:-1]:
+        ax.plot([center_x - 0.55, center_x - 2.2], [y0, y0 + 0.6], color="#f4f0dd", linewidth=1.15, alpha=0.6)
+        ax.plot([center_x + 0.55, center_x + 2.2], [y0, y0 + 0.6], color="#f4f0dd", linewidth=1.15, alpha=0.6)
+        ax.plot([center_x - 0.5, center_x - 1.85], [y0, y0 - 0.75], color="#f4f0dd", linewidth=1.0, alpha=0.35)
+        ax.plot([center_x + 0.5, center_x + 1.85], [y0, y0 - 0.75], color="#f4f0dd", linewidth=1.0, alpha=0.35)
+
+    # Node circles and labels
+    for y0, color, name in zip(node_y, node_colors, node_names):
+        ax.add_patch(plt.Circle((center_x, y0), 0.28, facecolor=color, edgecolor="white", linewidth=1.4, zorder=4))
+        ax.text(center_x + 0.48, y0, name, va="center", fontsize=10.2, color="white", weight="bold")
+
+    ax.text(6.0, 15.25, "Custom Nadi Field Map", ha="center", fontsize=20, color="white", weight="bold")
+    ax.text(
+        6.0,
+        14.68,
+        "Nadis = channels / circuit lines. Chakras = node-like load zones where return and residue concentrate.",
+        ha="center",
+        fontsize=10.3,
+        color="#d9e5f2",
+    )
+
+    # Main nadi callouts
+    ax.text(2.2, 13.75, "इडा  Ida", fontsize=12, color="#c7d8ef", weight="bold")
+    ax.text(2.2, 13.15, "cooling / inward / receptive channel", fontsize=9.3, color="#d9e5f2")
+    ax.text(2.2, 12.7, "working read: introspective load, memory, parasympathetic-like recovery", fontsize=8.8, color="#d9e5f2")
+
+    ax.text(8.65, 13.75, "पिङ्गला  Pingala", fontsize=12, color="#efc37f", weight="bold")
+    ax.text(8.65, 13.15, "activating / outward / mobilizing channel", fontsize=9.3, color="#d9e5f2")
+    ax.text(8.65, 12.7, "working read: drive, action bias, sympathetic-like activation", fontsize=8.8, color="#d9e5f2")
+
+    ax.text(4.35, 1.65, "सुषुम्ना  Sushumna", fontsize=12, color="#f4f0dd", weight="bold")
+    ax.text(4.35, 1.15, "central integration line through the node stack", fontsize=9.3, color="#d9e5f2")
+
+    # Repo interpretation box
+    box = plt.Rectangle((0.85, 0.6), 3.25, 3.0, facecolor="#123758", edgecolor="#d9e5f2", linewidth=1.0, alpha=0.95)
+    ax.add_patch(box)
+    ax.text(1.15, 3.15, "Repo Read", fontsize=11.5, color="white", weight="bold")
+    ax.text(1.15, 2.62, "• nadis = channels / circuit paths", fontsize=9.2, color="#d9e5f2")
+    ax.text(1.15, 2.17, "• chakras = node-like concentration zones", fontsize=9.2, color="#d9e5f2")
+    ax.text(1.15, 1.72, "• saṃskāra = stored load in the system", fontsize=9.2, color="#d9e5f2")
+    ax.text(1.15, 1.27, "• emotion = active phase", fontsize=9.2, color="#d9e5f2")
+    ax.text(1.15, 0.82, "• karma = delayed return through the channels", fontsize=9.2, color="#d9e5f2")
+
+    # Branch lane box
+    box2 = plt.Rectangle((8.35, 0.6), 2.85, 3.0, facecolor="#123758", edgecolor="#d9e5f2", linewidth=1.0, alpha=0.95)
+    ax.add_patch(box2)
+    ax.text(8.65, 3.15, "Branch Lanes", fontsize=11.5, color="white", weight="bold")
+    ax.text(8.65, 2.58, "Older systems describe many more nadis.", fontsize=9.0, color="#d9e5f2")
+    ax.text(8.65, 2.08, "This map keeps the major three visible", fontsize=9.0, color="#d9e5f2")
+    ax.text(8.65, 1.63, "and treats side branches as local", fontsize=9.0, color="#d9e5f2")
+    ax.text(8.65, 1.18, "distribution paths around each node.", fontsize=9.0, color="#d9e5f2")
+
+    ax.text(
+        6.0,
+        0.28,
+        "Custom working graphic for the emotion-karma dynamics repo. It maps traditional channel language into a systems / measurement frame.",
+        ha="center",
+        fontsize=8.9,
+        color="#d9e5f2",
+    )
+
+    fig.tight_layout(rect=(0.02, 0.02, 0.98, 0.98))
+    fig.savefig(OUT / "08_custom_nadi_field_map.png", facecolor=fig.get_facecolor())
+    plt.close(fig)
+
+
 def main():
     style()
     make_feedback_loop()
@@ -293,6 +612,9 @@ def main():
     make_coupled_resonance()
     make_secondary_modulation()
     make_stack_measurement_ladder()
+    make_vedic_translation_chart()
+    make_chakra_language_map()
+    make_custom_nadi_map()
 
 
 if __name__ == "__main__":

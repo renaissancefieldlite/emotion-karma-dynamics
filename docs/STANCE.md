@@ -27,6 +27,46 @@ That gives the core loop:
 
 `state -> action -> return -> updated state`
 
+## 1A. Chemical Ignition Layer
+
+An expanded working version in this repo treats neurochemical release as a
+possible first measurable state of karmic loading.
+
+Let:
+
+- `c(t)` = chemical-release vector such as cortisol, dopamine, norepinephrine,
+  serotonin, oxytocin, or related regulation-linked signals
+- `e(t)` = active emotion state
+- `k_L(t)` = latent karma / unresolved residue
+- `k_E(t)` = enacted karma / outward consequence path
+- `k_T(t)` = transformed karma / integrated return path
+- `R(t)` = regulation / integration input
+
+Then a simple transition system is:
+
+`de/dt = -alpha*e + B*c(t) + gamma*k_L(t) + I(t)`
+
+`dk_L/dt = rho*|e(t)| + eta*||c(t)|| - (mu_E + mu_T)*k_L(t)`
+
+`dk_E/dt = mu_E*k_L(t) - lambda_E*k_E(t)`
+
+`dk_T/dt = mu_T*k_L(t) + beta*R(t) - lambda_T*k_T(t)`
+
+Read this as:
+
+- `B*c(t)` injects the first measurable chemical impulse into the emotional
+  state
+- `k_L` is the unresolved carryover that persists if the system does not
+  integrate or discharge cleanly
+- `k_E` is karma enacted through behavior, speech, outer pattern, or repeated
+  loop
+- `k_T` is karma transformed through regulation, processing, breath, time,
+  reframing, and integration
+
+This is not presented as settled neuroscience. It is the repo's working
+physics-style hypothesis for translating chemical release, emotional state,
+unresolved load, and regulation into one coherent field model.
+
 ## 2. Measurement Layer
 
 This stance is designed to stay close to measurable channels:

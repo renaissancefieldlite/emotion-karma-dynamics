@@ -59,6 +59,42 @@ Interpretation:
 - `QuantumConsciousnessBridge` = protocol / packaging bridge
 - `Muse 2 EEG + HRV` = next empirical capture layer
 
+## 06_vedic_modern_translation_layer.png
+
+Purpose:
+- provide a clean Vedic-to-modern terminology bridge for the repo
+- show the Sanskrit / Devanagari layer beside the measurement layer
+
+Interpretation:
+- `karma` is read here as delayed return and persistence, not only abstract fate
+- `rasa` / `bhava` are treated as structured affect categories
+- `saṃskāra` is treated as stored residue or learned groove
+- `nāḍī` / `chakra` language is translated into regulation-channel and load-cluster language
+
+## 07_chakra_language_map.png
+
+Purpose:
+- map the seven chakra terms into the repo's language of nodes, channels, load, and return
+- show emotional polarity and a modern measurement-facing interpretation for each layer
+
+Interpretation:
+- chakras are treated here as node-like concentration zones
+- nadis are treated as channels or pathways linking those nodes
+- positive / open states are paired with loaded / unresolved states
+- each chakra row is translated into a modern read about regulation, perception, and recurring load
+
+## 08_custom_nadi_field_map.png
+
+Purpose:
+- provide a custom repo-native nadi graphic instead of borrowing a stock yoga diagram
+- make the `nadis = channels / circuit lines` and `chakras = nodes` framing explicit
+
+Interpretation:
+- `Ida`, `Pingala`, and `Sushumna` are shown as the three main channels
+- chakra points sit on the central line as node-like concentration zones
+- side branches suggest local distribution paths without trying to draw all traditional nadis
+- the callout boxes translate the traditional map into the repo's systems language
+
 ## Citation Spine
 
 - Zotev et al. 2016
