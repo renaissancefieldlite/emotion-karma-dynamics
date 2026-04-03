@@ -238,6 +238,30 @@ licensing record already being preserved across Playground.
 - `08_custom_nadi_field_map.png`
   - custom repo-native map of Ida, Pingala, Sushumna, and the chakra nodes as a channel / circuit model
 
+## Diagram Gallery
+
+### Core Dynamics
+
+![Emotion / Karma Feedback Loop](assets/charts/01_emotion_feedback_loop.png)
+
+![Biomarker Regulation Panel](assets/charts/02_biomarker_regulation_panel.png)
+
+![Coupled Resonance](assets/charts/03_coupled_resonance.png)
+
+![Secondary Modulation](assets/charts/04_secondary_modulation.png)
+
+### Stack And Translation
+
+![Stack Measurement Ladder](assets/charts/05_stack_measurement_ladder.png)
+
+![Vedic / Modern Translation Layer](assets/charts/06_vedic_modern_translation_layer.png)
+
+### Chakra And Nadi Maps
+
+![Chakra Language Map](assets/charts/07_chakra_language_map.png)
+
+![Custom Nadi Field Map](assets/charts/08_custom_nadi_field_map.png)
+
 ## Stack Tie-In
 
 This repo is designed to tie into the existing stack as follows:
